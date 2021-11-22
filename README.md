@@ -15,19 +15,19 @@ cd CountryService
 ```
 
 
-### 1 With `MAVEN`
+### Way 1. With `MAVEN`
 
 ```shell
 ./mvnw spring-boot::run
 ```
 
-### 2 With 'MAVEN'
+### Way 2. With 'MAVEN'
 ```shell
 ./mvnw package
 java -jar target/MyApp-0.0.1-SNAPSHOT.jar 
 ```
 
-### 3 With Docker
+### Way 3. With Docker
 ```shell
 ./mvnw package
 docker-compose up

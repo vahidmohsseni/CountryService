@@ -63,3 +63,12 @@ curl localhost:8080/countries/
 
 [{"name":"Sudan","country_code":"SD"},{"name":"Mexico","country_code":"MX"},{"name":"Cuba","country_code":"CU"},{"name":"Finland","country_code":"FI"} ... ]
 ```
+
+[http://localhost:8080/countries/finland](http://localhost:8080/countries/finland)
+will result like the following:
+
+```shell
+curl localhost:8080/countries/finland
+
+{"name":"Finland","country_code":"FI","capital":"Helsinki","population":5530719,"flag_file_url":"https://flagcdn.com/w320/fi.png"}
+```

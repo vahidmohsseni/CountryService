@@ -1,5 +1,5 @@
 # Country Information DB
-## A JAVA based Implementation of a RESTful API using SpringBoot Reactor Core and R2DBC
+### A JAVA based Implementation of a RESTful API using SpringBoot Reactor Core and R2DBC
 
 
 ## How it works?
@@ -33,9 +33,33 @@ java -jar target/MyApp-0.0.1-SNAPSHOT.jar
 docker-compose up
 ```
 
-
+The application will run on `port` `8080`. [http://localhost:8080/countries/](http://localhost:8080/countries/)
 
 
 ## Requirements
 Remember to install JAVA JDK version 8 or upper.
 If you want to run it using Docker, the latest version of docker is fine.
+
+
+## APIs Description
+In this application there are two type of APIs.
+#### `/countries/ext/{name}`
+First type uses an external service to fetch the information.
+This API is available in the location `/countries/ext/{name}`. For example, 
+[http://localhost:8080/countries/ext/finland](http://localhost:8080/countries/ext/finland)
+will show you following result:
+```shell
+curl localhost:8080/countries/ext/finland
+
+{"name":"Finland","country_code":"FI","capital":"Helsinki","population":5530719,"flag_file_url":"https://flagcdn.com/w320/fi.png"}
+```
+
+#### `/countries/` and `/countries/{name}`
+The second type, reads the information from a local database. For example,
+[http://localhost:8080/countries/](http://localhost:8080/countries/)
+will result like the following:
+```shell
+curl localhost:8080/countries/
+
+[{"name":"Sudan","country_code":"SD"},{"name":"Mexico","country_code":"MX"},{"name":"Cuba","country_code":"CU"},{"name":"Finland","country_code":"FI"} ... ]
+```

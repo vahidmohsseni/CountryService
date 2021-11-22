@@ -14,12 +14,19 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private static String indexPage = "<!DOCTYPE html>\n" + "<html>\n" + "<body>\n" + "\n" + "<h1>Welcome!</h1>\n" + "\n" + "<p>Go to <a href='http://localhost:8080/countries/'>http://localhost:8080/countries/</a> page.</p>\n" + "<p>For More information refer <a target=_blank href='https://github.com/vahidmohsseni/CountryService'>here</a>!</p>" + "\n" + "</body>\n" + "</html>";
+    private static String indexPage = "<!DOCTYPE html>\n" + "<html>\n" + "<body>\n" + "\n" + "<h1>Welcome!</h1>\n" + "\n" + "<p>Go to <a href='/countries/'>/countries/</a> page.</p>\n" + "<p>For More information refer <a target=_blank href='https://github.com/vahidmohsseni/CountryService'>here</a>!</p>" + "\n" + "</body>\n" + "</html>";
 
 
     @GetMapping(value = {"", "/"})
     private String homePage(){
         return indexPage;
     }
+
+
+    @GetMapping(value = {"/nordea"})
+    private String norPage(){
+        return "Hello Nordea!";
+    }
+
 
 }

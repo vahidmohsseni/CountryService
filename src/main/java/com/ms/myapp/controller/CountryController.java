@@ -19,12 +19,7 @@ public class CountryController {
 
     private final CountryService countryService;
 
-    @GetMapping(value = "")
-    public String showHomePage(){
-        return "Hello Nordea!";
-    }
-
-    @GetMapping("/")
+    @GetMapping({"/", ""})
     public Flux<Country> showAll(){
         return countryService.getAll();
     }

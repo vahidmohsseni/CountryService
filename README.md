@@ -14,24 +14,24 @@ git clone https://github.com/vahidmohsseni/CountryService
 cd CountryService
 ```
 
+### Way 1. With Docker
+```shell
+./mvnw package
+docker-compose up
+```
 
-### Way 1. With `MAVEN`
+### Way 2. With `MAVEN`
 
 ```shell
 ./mvnw spring-boot::run
 ```
 
-### Way 2. With 'MAVEN'
+### Way 3. With `MAVEN`
 ```shell
 ./mvnw package
 java -jar target/MyApp-0.0.1-SNAPSHOT.jar 
 ```
 
-### Way 3. With Docker
-```shell
-./mvnw package
-docker-compose up
-```
 
 The application will run on `port` `8080`. [http://localhost:8080/countries/](http://localhost:8080/countries/)
 

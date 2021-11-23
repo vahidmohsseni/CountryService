@@ -1,12 +1,13 @@
 package com.ms.myapp.service;
 
-import com.ms.myapp.model.CommonResponse;
+import com.ms.myapp.exception.MyNFException;
 import com.ms.myapp.model.Country;
-import com.ms.myapp.repository.CoRepo;
 import com.ms.myapp.repository.CountryRepository;
 import com.ms.myapp.service.external.ExternalCountryService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -17,7 +18,6 @@ public class CountryService {
 
     private final CountryRepository countryRepository;
     private final ExternalCountryService externalCountryService;
-    private final CoRepo coRepo;
 
     public void addCountry(Country country){
         countryRepository.addCountry(country.getName(),
@@ -38,8 +38,8 @@ public class CountryService {
 
     public Mono<Country> getCountryByName(String name){
         name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
-        Mono<Country> fallback = Mono.just(new CommonResponse("not found", 404));
-        return countryRepository.findById(name).switchIfEmpty(fallback);
+        return countryRepository.findById(name)
+                .switchIfEmpty(responseNotFound());
 
     }
 
@@ -63,5 +63,13 @@ public class CountryService {
 
     private Exception disposeError(Object c){
         return new Exception("Already Added!");
+    }
+
+    private <T> Mono <T> responseNotFound(){
+        return Mono.error(new MyNFException(HttpStatus.NOT_FOUND, "Not Found"));
+    }
+
+    private <T> Mono <T> responseInternalError(String msg){
+        return Mono.error(new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, msg));
     }
 }

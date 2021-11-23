@@ -18,4 +18,9 @@ public class CommonResponse extends Country{
     private final String message;
     private final int code;
 
+    @Override
+    public String toString(){
+        return String.format("{message:%s, code:%s}", this.message, this.code);
+    }
+
 }

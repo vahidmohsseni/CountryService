@@ -72,3 +72,10 @@ curl localhost:8080/countries/finland
 
 {"name":"Finland","country_code":"FI","capital":"Helsinki","population":5530719,"flag_file_url":"https://flagcdn.com/w320/fi.png"}
 ```
+
+## Tests
+There are some tests added for controller and repository. Available with following command:
+
+```shell
+./mvnw test
+```

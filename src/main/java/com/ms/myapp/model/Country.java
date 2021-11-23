@@ -3,7 +3,6 @@ package com.ms.myapp.model;
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;

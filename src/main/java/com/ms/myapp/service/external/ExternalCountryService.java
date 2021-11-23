@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+
 @Service
 @RequiredArgsConstructor
 public class ExternalCountryService {
@@ -59,7 +60,5 @@ public class ExternalCountryService {
     private <T> Mono <T> responseInternalError(String msg){
         return Mono.error(new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, msg));
     }
-
-
 
 }

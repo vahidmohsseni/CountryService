@@ -40,9 +40,7 @@ public class CountryService {
         name = name.substring(0,1).toUpperCase() + name.substring(1).toLowerCase();
         return countryRepository.findById(name)
                 .switchIfEmpty(responseNotFound());
-
     }
-
 
     public Mono<Country> getCountryFromExternal(String name){
         Mono<Country> response = externalCountryService.getByName(name);
@@ -55,7 +53,6 @@ public class CountryService {
         response.subscribe(this::addCountry);
         return response;
     }
-
 
     private void dispose(Object c){
 
